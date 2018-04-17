@@ -1,0 +1,26 @@
+header h1{
+    font-size: 0.95vw;
+    letter-spacing: 0.25vw;
+}
+nav ul:first-child li {
+    margin-right:16px;
+    font-size:0.9rem;
+}
+nav ul:last-child li {
+    margin-left:16px;
+    font-size:0.9rem;
+}
+.resizable {
+    resize: both;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+}
+textarea{
+    min-height: 95%;
+}
