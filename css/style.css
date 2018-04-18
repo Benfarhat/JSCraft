@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
+html, body{
+    height: 100%
+}
 body{
     font-family: 'Inconsolata', monospace;
     font-size:0.7em;
@@ -11,9 +14,7 @@ header h1{
     font-size: 0.95vw;
     letter-spacing: 0.25vw;
 }
-section{
-    border: 1px solid red;
-}
+
 nav ul:first-child li {
     margin-right:16px;
     font-size:0.9rem;
@@ -53,6 +54,12 @@ iframe {
 }
 textarea{
     min-height: 95%;
+    border: 1px solid rgba(0, 0, 0, .1);
+    width:100%;
+}
+section h1{
+    min-height: 1.5em;
+    padding-left:4px;
 }
 .bg-grey{
     background-color: dimgray;
@@ -63,6 +70,7 @@ textarea{
 .dropdown-content {
     top:2.2em;
     bottom:auto;
+    width:auto;
   }
   .left .dropdown-content {
     right: 0;
