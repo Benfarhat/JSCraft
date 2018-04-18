@@ -114,59 +114,59 @@ footer{
   /* Align items in Main Axis */
 
   /* Justify-content */
-  .justify-content-start{
+  .main-axis-start, .justify-content-start{
       justify-content: start
   }
-  .justify-content-center{
+  .main-axis-center, .justify-content-center{
       justify-content: center
   }
-  .justify-content-end{
+  .main-axis-end, .justify-content-end{
       justify-content: end
   }
-  .justify-content-space-around{
+  .main-axis-space-around, .justify-content-space-around{
       justify-content: space-around
   }
-  .justify-content-space-between{
+  .main-axis-space-between, .justify-content-space-between{
       justify-content: space-between
   }
 
   /* Align items in Cross Axis */
 
   /* Align-items */
-  .align-items-start{
+  .cross-axis-start, .align-items-start{
       align-items: flex-start
   }
-  .align-items-center{
+  .cross-axis-center, .align-items-center{
       align-items: center
   }
-  .align-items-end{
+  .cross-axis-end, .align-items-end{
       align-items: flex-end
   }
-  .align-items-stretch{
+  .cross-axis-stretch, .align-items-stretch{
       align-items: stretch
   }
-  .align-items-baseline{
+  .cross-axis-baseline, .align-items-baseline{
       align-items: baseline
   }
 
   /* Extra space items in Cross Axis */
   /* Align-content */
-  .align-content-start{
+  .cross-axis-extra-start, .align-content-start{
     align-content: flex-start
   }
-  .align-content-center{
+  .cross-axis-extra-center, .align-content-center{
       align-content: center
   }
-  .align-content-end{
+  .cross-axis-extra-end, .align-content-end{
       align-content: flex-end
   }
-  .align-content-stretch{
+  .cross-axis-extra-stretch, .align-content-stretch{
       align-content: stretch
   }
-  .align-content-space-between{
+  .cross-axis-extra-space-between, .align-content-space-between{
       align-content: space-between
   }
-  .align-content-space-around{
+  .cross-axis-extra-space-around, .align-content-space-around{
       align-content: space-around
   }
 
@@ -531,9 +531,6 @@ footer{
     text-align: center
   }
 
-  .sidebar{
-
-  }
   .sidebar a.active{
     border-left:4px solid #bbb
   }
@@ -758,7 +755,9 @@ footer{
 .dropdown-content {
   display: none;
   position: absolute;
-  top:32px;
+  /*top:32px;*/
+  top:2.2em;
+  bottom:auto;
   left: 0;
   width:100%;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -991,11 +990,11 @@ p.first-letter-5::first-letter {
 .first-letter-info::first-letter {
   color: #227093;
 }
-}
+
 .first-letter-warning::first-letter {
   color: #cd6133;
 }
-}
+
 .first-letter-white::first-letter {
   color: #fff;
 }
