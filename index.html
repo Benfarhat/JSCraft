@@ -11,39 +11,44 @@
 </head>
 <body class="flex col wrap align-items-stretch">      
     <header class="bg-dark flex row align-items-center">
-        <h1 class="col-span-2 uppercase">JSCraft</h1>
-        <nav class="col-span-10 flex row wrap justify-content-space-between">
+        <h1 class="uppercase p-l-16 p-r-32">JSCraft</h1>
+        <nav class="flex row wrap flex-grow-1 justify-content-space-between">
             <ul class="flex row wrap">
                 <li class="closure" data-target="#html-editor" data-expand="#js-editor" data-expand-class="col-span-8"><i class="fa fa-bars"></i></li>
-                <li class="modifier" data-target="#js-editor" data-target-class="order--1"><i class="fa fa-random"></i></li>
+                <li class="bar hide-small"></li>
+                <li class="bab hide-large"></li>
+                <li class="modifier" data-target="#js-editor" data-target-class="order--1"><i class="fab fa-html5"></i></li>
+                <li class="modifier" data-target="#js-editor" data-target-class="order--1"><i class="fab fa-js"></i></li>
+                <li class="modifier" data-target="#js-editor" data-target-class="order--1"><i class="fab fa-css3-alt"></i></li>
+                <li class="bar hide-small"></li>
+                <li class="bab hide-large"></li>
                 <li class="launch"><i class="fa fa-play"></i></li>
             </ul>
             <ul class="flex row wrap">
                 <li class="modifier" data-target="#js-editor" data-target-class="order-10"><i class="fa fa-random"></i></li>
                 <li class="closure" data-target="#aside" data-expand="#js-editor" data-expand-class="col-span-8"><i class="fa fa-bars"></i></li>
                 <li class="dropdown flex col justify-content-stretch">
-                    <a class="dropbtn">Demonstrations</a>
+                    <a class="dropbtn"><i class="fa fa-browser"></i> Layout</a>
+                    <div class="dropdown-content flex col bg-light">
+                        <a href="#breadcrumb"><i class="fa fa-th-large"></i>Grid</a>
+                        <a href="#breadcrumb"><i class="fa fa-columns"></i> Vertical</a>
+                        <a href="#breadcrumb"><i class="fa fa-list-alt"></i> Horizontale</a>
+                    </div>
+                </li>
+                <li class="dropdown flex col justify-content-stretch">
+                    <a class="dropbtn"><i class="fa fa-address-book"></i> Settings</a>
                     <div class="dropdown-content flex col bg-light">
                         <a href="#breadcrumb"><i class="fa fa-address-book"></i> Breadcrumb </a>
-                        <a href="javascript:void(0)"><i class="fa fa-comments"></i> float picture </a>
-                        <a  href="#float-picture"><i class="fa fa-at"></i> picture effect </a>
-                        <a href="#picture-wide"><i class="fa fa-bell"></i> picture wide </a>
-                        <a href="#first-letter"><i class="fa fa-briefcase"></i> First letter </a>
-                        <a href="#buttons"><i class="fa fa-coffee"></i> Buttons </a>
-                        <a href="#dropdown"><i class="fa fa-cogs"></i> Dropdown </a>
-                        <a href="#radius-rounded"><i class="fa fa-file-alt"></i> Radius and rounded </a>
-                        <a href="#shadow"><i class="fa fa-coffee"></i> Shadow </a>
-                        <a href="#badge"><i class="fa fa-cogs"></i> Badge </a>
-                        <a href="#button-badge"><i class="fa fa-file-alt"></i> Button with badge </a>
                     </div>
                 </li>
             </ul>
         </nav>
-    </header>      
-    <main class="bg-danger flex row wrap">
+    </header>    
+
+    <main class="bg-danger flex row wrap cross-axis-stretch">
         
         <!-- HTML Editor -->
-        <section id="html-editor" class="bg-danger">
+        <section id="html-editor" class="bg-danger flex-grow-1">
             <div class="flex col">
                 <h1><i class="fab fa-html5"></i> HTML Editor</h1>
                 <textarea id="htmleditor" placeholder="html" cols="40" rows="10"><h1>This is a test</h1>
@@ -54,7 +59,7 @@
         <!-- /HTML Editor -->
         
         <!-- JS Editor -->
-        <section id="js-editor" class="panel bg-info flex col">  
+        <section id="js-editor" class="panel bg-info flex col flex-grow-1">  
             <h1><i class="fab fa-js"></i> JS Editor</h1>
             <textarea id="jseditor" placeholder="js" cols="40" rows="10">(function($) { 
   $(document).ready(function() {
@@ -66,7 +71,7 @@
         <!-- /JS Editor -->
 
         <!-- CSS Editor -->
-        <section id="aside" class="panel bg-warning">
+        <section id="css-editor" class="panel bg-warning flex-grow-1">
             <div class="flex col">
                 <h1><i class="fab fa-css3-alt"></i> CSS Editor</h1>
                 <textarea id="csseditor" placeholder="css" cols="40" rows="10">h1 { color: #6ab04c; text-transform: uppercase;}
@@ -77,7 +82,7 @@ p{ color: #22a6b3; }
         <!-- /CSS Editor -->
 
         <!-- HTML Render -->
-        <section class="panel bg-primary flex col justify-content-start render">
+        <section id="render-wrapper" class="panel bg-primary flex col flex-grow-1 render">
             <h1><i class="fas fa-eye"></i> Result</h1>
             <div class="resizable bg-white">
                 <iframe id="render-frame" sandbox="allow-scripts allow-modals allow-same-origin"></iframe>
@@ -86,7 +91,7 @@ p{ color: #22a6b3; }
         <!-- /HTML Render -->
 
         <!-- Console -->
-        <section class="panel bg-success flex col justify-content-start">
+        <section id="console-wrapper" class="panel bg-success flex col justify-content-start">
             <h1><i class="fas fa-terminal"></i> Console</h1>
             <textarea id="console" placeholder="" cols="40" rows="10"></textarea>
         </section>

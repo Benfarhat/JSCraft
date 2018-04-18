@@ -11,6 +11,9 @@ header h1{
     font-size: 0.95vw;
     letter-spacing: 0.25vw;
 }
+section{
+    border: 1px solid red;
+}
 nav ul:first-child li {
     margin-right:16px;
     font-size:0.9rem;
@@ -18,6 +21,12 @@ nav ul:first-child li {
 nav ul:last-child li {
     margin-left:16px;
     font-size:0.9rem;
+}
+nav ul:last-child li:last-child {
+    padding-right:16px;
+}
+nav ul li{
+    cursor: pointer;
 }
 header nav{
     min-height:2rem;
