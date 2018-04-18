@@ -16,9 +16,10 @@
             <ul class="flex row wrap">
                 <li class="bar hide-small"></li>
                 <li class="bab hide-large"></li>
-                <li class="closure" data-target="#html-editor"><i class="fab fa-html5"></i></li>
-                <li class="closure" data-target="#js-editor"><i class="fab fa-js"></i></li>
-                <li class="closure" data-target="#css-editor"><i class="fab fa-css3-alt"></i></li>
+                <li id="html-btn" class="closure" data-target="#html-editor" data-expand="#html-btn" data-expand-class="text-danger"><i class="fab fa-html5"></i></li>
+                <li id="js-btn" class="closure" data-target="#js-editor" data-expand="#js-btn" data-expand-class="text-info"><i class="fab fa-js"></i></li>
+                <li id="css-btn" class="closure" data-target="#css-editor" data-expand="#css-btn" data-expand-class="text-warning"><i class="fab fa-css3-alt"></i></li>
+                <li id="console-btn" class="closure" data-target="#console-wrapper" data-expand="#console-btn" data-expand-class="text-success"><i class="fas fa-terminal"></i></li>
                 <li class="bar hide-small"></li>
                 <li class="bab hide-large"></li>
                 <li class="launch"><i class="fa fa-play"></i></li>
@@ -76,6 +77,13 @@ p{ color: #22a6b3; }
         </section>
         <!-- /CSS Editor -->
 
+        <!-- Console -->
+        <section id="console-wrapper" class="bg-success flex col justify-content-start">
+            <h1><i class="fas fa-terminal"></i> Console</h1>
+            <textarea id="console" placeholder="" cols="40" rows="10"></textarea>
+        </section>
+        <!-- /Console -->
+
         <!-- HTML Render -->
         <section id="render-wrapper" class="flex col flex-grow-1 render">
             <h1 class="bg-primary"><i class="fas fa-eye"></i> Result</h1>
@@ -83,12 +91,6 @@ p{ color: #22a6b3; }
         </section>
         <!-- /HTML Render -->
 
-        <!-- Console -->
-        <section id="console-wrapper" class="bg-success flex col justify-content-start">
-            <h1><i class="fas fa-terminal"></i> Console</h1>
-            <textarea id="console" placeholder="" cols="40" rows="10"></textarea>
-        </section>
-        <!-- /Console -->
 
     </main>
 
