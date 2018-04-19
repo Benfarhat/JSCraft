@@ -32,8 +32,9 @@ for(let i = 0; i < closures.length; i++){
     }); 
 }
 
-/* Add / Remove Class => Sort of toggle
-You can for example change order propertie of an item */
+/* Add  Remove Class => Sort of toggle
+You can for example change order propertie of an item 
+*/
 
 var modifiers = document.querySelectorAll('.modifier')
 for(let i = 0; i < modifiers.length; i++){

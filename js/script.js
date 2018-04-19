@@ -1,27 +1,19 @@
-/* TODO 
+jQuery.noConflict();
 
-No js framework for source
+/* Get console message (log, debug, warn and error) from default output to div */
 
-possibility to let user use his prefered framework (prepare a list of cdn)
+var log = document.querySelector('#console');
+['log','debug','info','warn','error'].forEach(function (verb) {
+    console[verb] = (function (method, verb, log) {
+        return function () {
+            method.apply(console, arguments);
+            log.innerHTML += Array.prototype.slice.call(arguments).join('\n') + '\n'
 
-Pour la console comment récupérer les messages de l'iframe et les afficher en local
+        };
+    })(console[verb], verb, log);
+});
 
-*/
-(function () {
-    if (!console) {
-        console = {};
-    }
-    var old = console.log;
-    var logger = document.getElementById('console');
-    console.log = function (message) {
-        if (typeof message == 'object') {
-            logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : String(message)) + '<br />';
-        } else {
-            logger.innerHTML += message + '<br />';
-        }
-    }
-})();
-
+/* Get HTML, Js and CSS code from multiple textarea to iframe */
 
 (function ($) {
     function launchCode() {
@@ -50,3 +42,4 @@ Pour la console comment récupérer les messages de l'iframe et les afficher en 
     $('.launch').click(launchCode);
 
 }(jQuery));
+
