@@ -1,5 +1,3 @@
-jQuery.noConflict();
-
 /* Get console message (log, debug, warn and error) from default output to div */
 
 var log = document.querySelector('#console');
@@ -15,31 +13,55 @@ var log = document.querySelector('#console');
 
 /* Get HTML, Js and CSS code from multiple textarea to iframe */
 
-(function ($) {
-    function launchCode() {
-
-        $('#render-frame').contents().find('head').html('');
-        $('#render-frame').contents().find('body').html('');
-
-        var cssValue = $('#csseditor').val();
-        var htmlValue = $('#htmleditor').val();
-        var jsValue = $('#jseditor').val();
-
-        var styleValue = "<style>" + cssValue + "<\/style>";
-        var scriptValue = "<script>" + jsValue + "<\/script>";
-        var jqueryfornow = '<script src="https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.11.3\/jquery.min.js"><\/script>';
-
-        var head = $("#render-frame").contents().find("head");
-        var content = $("#render-frame").contents().find("body");
-
-        head.append(styleValue);
-        content.prepend(htmlValue);
-        content.append(jqueryfornow);
-        content.append(scriptValue);
+const renderView = () => {
+    console.log("Render ...")
+    let renderTarget = false || document.querySelector('#render-frame')
+    let consoleTarget = false || document.querySelector('#console')
+    let preserveTarget = false || document.querySelector('#preservelog-btn')
+    if(preserveTarget && !preserveTarget.classList.contains("bg-primary")){
+        consoleTarget.innerHTML = ""
     }
+    let Iframe = renderTarget.contentWindow ||
+    renderTarget.contentDocument.document ||
+    renderTarget.contentDocument;
 
-    $('#render-frame').ready(launchCode);
-    $('.launch').click(launchCode);
+    let htmlValue = document.querySelector('#htmleditor').textContent;
+    let cssValue = document.querySelector('#csseditor').textContent;
+    let jsValue = document.querySelector('#jseditor').textContent;
 
-}(jQuery));
+    renderTarget.contentWindow.document.head.innerHTML = `<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSCraft</title>
+    <style>
+    ${cssValue}
+    </style>
+    `;
 
+    renderTarget.contentWindow.document.body.innerHTML = `
+    ${htmlValue}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+    ${jsValue}
+    </script>
+    `;
+
+    
+}
+
+[].forEach.call( document.querySelectorAll('.launch'), function(el) {
+    el.addEventListener('click', function() {
+      renderView();
+   }, false);
+
+});
+
+
+/*
+
+@todo
+should we use postMessage:
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+
+*/
