@@ -29,9 +29,8 @@
                 <li class="dropdown flex col justify-content-stretch left">
                     <a class="dropbtn"><i class="fas fa-desktop"></i> Layout</a>
                     <div class="dropdown-content flex col bg-light">
-                        <a href="#breadcrumb"><i class="fa fa-th-large"></i> Grid</a>
-                        <a href="#breadcrumb"><i class="fa fa-columns"></i> Vertical</a>
-                        <a href="#breadcrumb"><i class="fa fa-list-alt"></i> Horizontale</a>
+                        <a href="#" class="addremove" data-target="main.flex" data-add-class="row" data-remove-class="col"><i class="fa fa-columns"></i> Vertical</a>
+                        <a href="#" class="addremove" data-target="main.flex" data-add-class="col" data-remove-class="row"><i class="fa fa-list-alt"></i> Horizontale</a>
                     </div>
                 </li>
                 <li class="dropdown flex col justify-content-stretch left">
@@ -45,7 +44,7 @@
         </nav>
     </header>    
 
-    <main class="flex row flex-grow-1 werap cross-axis-stretch">
+    <main class="flex row flex-grow-1 cross-axis-stretch">
         
         <!-- HTML Editor -->
         <section id="html-editor" class="bg-danger flex col flex-grow-1">

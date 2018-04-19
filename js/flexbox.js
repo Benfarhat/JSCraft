@@ -32,7 +32,7 @@ for(let i = 0; i < closures.length; i++){
     }); 
 }
 
-/* Add / Remove Class
+/* Add / Remove Class => Sort of toggle
 You can for example change order propertie of an item */
 
 var modifiers = document.querySelectorAll('.modifier')
@@ -51,6 +51,31 @@ for(let i = 0; i < modifiers.length; i++){
             /* or simply:
             element.classList.toggle(className);
             */
+        }
+
+        event.defaultPrevented;
+    }); 
+}
+
+/* Add / Remove Class No toggle */
+
+var modifiers = document.querySelectorAll('.addremove')
+for(let i = 0; i < modifiers.length; i++){
+   modifiers[i].addEventListener('click', function(event) {
+        let target = false || this.getAttribute("data-target")
+        let addClassName = false || this.getAttribute("data-add-class")
+        let removeClassName = false || this.getAttribute("data-remove-class")
+
+        if((target && addClassName) || (target && removeClassName)){ 
+            let element = false || document.querySelector(target)
+            if(element){            
+                if (addClassName && !element.classList.contains(addClassName)){
+                    element.classList.add(addClassName);
+                } 
+                if (removeClassName && element.classList.contains(removeClassName)){
+                    element.classList.remove(removeClassName);
+                } 
+            }
         }
 
         event.defaultPrevented;
