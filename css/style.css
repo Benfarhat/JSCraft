@@ -77,3 +77,22 @@ section h1{
     right: 0;
     left: auto;
 }
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
+}
+.clearfix:after { 
+    content: "."; 
+    visibility: hidden; 
+    display: block; 
+    height: 0; 
+    clear: both;
+ }
+ .closure{
+     cursor: pointer;
+     outline: none
+ }
