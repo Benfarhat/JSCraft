@@ -115,11 +115,18 @@ const renderView = () => {
 });
 
 
-/*
-
-@todo
-should we use postMessage:
-
-https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
-
+/* Erase textarea content 
 */
+
+var erasers = document.querySelectorAll('.erase')
+for(let i = 0; i < erasers.length; i++){
+    erasers[i].addEventListener('click', function(event) {
+        let target = false || this.getAttribute("data-target")
+        let toErase = document.querySelector(target)
+        
+        if(toErase.nodeName == 'TEXTAREA')
+            toErase.value = '';
+
+        event.defaultPrevented;
+    }); 
+}

@@ -99,7 +99,7 @@ section h1{
     height: 0; 
     clear: both;
  }
- .closure{
+ .erase, .closure{
      cursor: pointer;
      outline: none
  }
