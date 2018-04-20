@@ -100,3 +100,15 @@ section h1{
  a.bg-dark {
      color:#ddd;
  }
+
+ textarea.line-number{
+    background: #fff url('../images/line-number.png');
+    background-attachment: local;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    padding-top: 10px;
+    border-color:#ccc;
+    font-size: 13px;
+    line-height:16px;
+    padding-top:12px;
+}
