@@ -1,7 +1,7 @@
 /* Get console message (log, debug, warn and error) from default output to div */
 
 var log = document.querySelector('#console');
-['log','debug','info','warn','error'].forEach(function (verb) {
+['log','debug','info','warn','error','exception','dir' ].forEach(function (verb) {
     console[verb] = (function (method, verb, log) {
         return function () {
             method.apply(console, arguments);
@@ -14,20 +14,21 @@ var log = document.querySelector('#console');
 /* Get HTML, Js and CSS code from multiple textarea to iframe */
 
 const renderView = () => {
-    console.log("Render ...")
+    console.log("Rendering ...")
     let renderTarget = false || document.querySelector('#render-frame')
     let consoleTarget = false || document.querySelector('#console')
     let preserveTarget = false || document.querySelector('#preservelog-btn')
     if(preserveTarget && !preserveTarget.classList.contains("bg-primary")){
-        consoleTarget.innerHTML = ""
+        //consoleTarget.innerHTML = ""
     }
+
     let Iframe = renderTarget.contentWindow ||
     renderTarget.contentDocument.document ||
     renderTarget.contentDocument;
 
-    let htmlValue = document.querySelector('#htmleditor').textContent;
-    let cssValue = document.querySelector('#csseditor').textContent;
-    let jsValue = document.querySelector('#jseditor').textContent;
+    let htmlValue = document.querySelector('#htmleditor').value;
+    let cssValue = document.querySelector('#csseditor').value;
+    let jsValue = document.querySelector('#jseditor').value;
 
     renderTarget.contentWindow.document.head.innerHTML = `<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,15 +39,22 @@ const renderView = () => {
     </style>
     `;
 
+
     renderTarget.contentWindow.document.body.innerHTML = `
     ${htmlValue}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <scridpt src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script>
     ${jsValue}
     </script>
     `;
 
-    
+    renderTarget.contentWindow.window.eval(`${jsValue}`)
+
+    /*
+    console.log(jsValue)
+
+    renderTarget.contentWindow.window.eval(`${jsValue}`)
+    */
 }
 
 [].forEach.call( document.querySelectorAll('.launch'), function(el) {
