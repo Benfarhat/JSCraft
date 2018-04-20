@@ -1,53 +1,87 @@
 
 var renderTarget = false || document.querySelector('#render-frame')
 var consoleTarget = false || document.querySelector('#console')
-var preserveTarget = false || document.querySelector('#preservelog-btn')
+var timestampTarget = false || document.querySelector('#timestamp-btn')
+
+const currentDate = () => {
+    var d = new Date();
+    let h = d.getHours();
+    let m = d.getMinutes();
+    let s = d.getSeconds();
+    let ms = d.getMilliseconds();
+    h = (h < 10)? '0' + h: h;
+    m = (m < 10)? '0' + m: m;
+    s = (s < 10)? '0' + s: s;
+    return h + ':' + m + ':' + s + ',' + ms;
+}
 
 /* Get console message (log, debug, warn and error) from default output to div */
 
 var log = document.querySelector('#console');
+//log.disabled = true;
+
 ['log','debug','info','warn','error','exception','dir' ].forEach(function (verb) {
+
+    /* Console function overloading in current window */
     console[verb] = (function (method, verb, log) {
         return function () {
             method.apply(console, arguments);
-            log.innerHTML += Array.prototype.slice.call(arguments).join('\n') + '\n'
+
+            let actualContent = log.innerHTML;
+            let prefix = '';
+            if(timestampTarget.classList.contains("text-info")){
+                prefix = currentDate() + ": ";
+            }
+            log.innerHTML = prefix + Array.prototype.slice.call(arguments).join('\n') + '\n';
+            log.innerHTML += actualContent;
 
         };
     })(console[verb], verb, log);
-});
 
+    
+    /* Console function overloading in iframe */
+    renderTarget.contentWindow.window.console[verb] = (function (method, verb, log) {
+        return function () {
+            method.apply(console, arguments);
+            
+          
+            let actualContent = log.innerHTML;
+            let prefix = '';
+            if(timestampTarget.classList.contains("text-info")){
+                prefix = currentDate() + ": ";
+            }
+            log.innerHTML = prefix + Array.prototype.slice.call(arguments).join('\n') + '\n';
+            log.innerHTML += actualContent;
+            /* @todo see: insertBefore */
+
+        };
+    })(renderTarget.contentWindow.window.console[verb], verb, log);
+
+});
 
 ['log','debug','info','warn','error','exception','dir' ].forEach(function (verb) {
     renderTarget.contentWindow.window.console[verb] = (function (method, verb, log) {
         return function () {
             method.apply(console, arguments);
-            /* 
-            @todo -> overflow-y auto and max-height
-            If we use a div instead of textarea
-            let classConsole = {
-                log : "text-info",
-                debug : "text-success",
-                log : "text-info",
-                info : "text-info",
-                warn : "text-warn",
-                error : "text-danger",
-                exception : "text-danger",
-                dir : "text-primary"
+            
+          
+            let actualContent = log.innerHTML;
+            let prefix = '';
+            if(timestampTarget.classList.contains("text-info")){
+                prefix = currentDate() + ": ";
             }
-            log.innerHTML += `<p class="${classConsole[verb]}">` + Array.prototype.slice.call(arguments).join('\n') + '<p>\n'
-            */
-            log.innerHTML += verb + ": " + Array.prototype.slice.call(arguments).join('\n') + '\n'
+            log.innerHTML = prefix + Array.prototype.slice.call(arguments).join('\n') + '\n';
+            log.innerHTML += actualContent;
+            /* @todo see: insertBefore */
 
         };
     })(renderTarget.contentWindow.window.console[verb], verb, log);
 });
 
+
 /* Get HTML, Js and CSS code from multiple textarea to iframe */
 
 const renderView = () => {
-    if(preserveTarget && !preserveTarget.classList.contains("bg-primary")){
-        //consoleTarget.innerHTML = ""
-    }
 
     let Iframe = renderTarget.contentWindow ||
     renderTarget.contentDocument.document ||

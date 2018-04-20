@@ -25,7 +25,10 @@
                 <li class="launch"><i class="fa fa-play"></i></li>
                 <li class="bar hide-small"></li>
                 <li class="bab hide-large"></li>
-                <li class="preserve modifier" id="preservelog-btn" data-target="#preservelog-btn" data-target-class="text-primary"><i class="fa fa-save"></i> Preserve log</li>
+                <!-- Timestamp log active when li have text-info class -->
+                <li class="timestamp modifier text-info" id="timestamp-btn" data-target="#timestamp-btn" data-target-class="text-info"><i class="fa fa-clock"></i> Timestamp log</li>
+                <li class="bar hide-small"></li>
+                <li class="bab hide-large"></li>
             </ul>
             <ul class="flex row wrap">
                 <!-- @todo
@@ -141,8 +144,7 @@ border-right: 1px solid rgba(0,0,0,.2)
         <!-- Console -->
         <section id="console-wrapper" class="bg-success flex col justify-content-start">
             <h1><i class="fas fa-terminal"></i> Console <span class="right p-r-4 clearfix closure" data-target="#console-wrapper" data-expand="#console-btn" data-expand-class="text-success"><i class="fa fa-times"></i></span></h1>
-            <textarea id="console" placeholder="" cols="40" rows="10"></textarea>
-            <!--<div id="console" class="panel bg-white"></textarea>-->
+            <textarea id="console" placeholder="Console messages ..." cols="40" rows="10" readonly></textarea>
         </section>
         <!-- /Console -->
 
