@@ -102,7 +102,7 @@ section h1{
  }
 
  textarea.line-number{
-    background: #fff url('../images/line-number.png');
+    background: #fff url('images/line-number.png');
     background-attachment: local;
     background-repeat: no-repeat;
     padding-left: 35px;
