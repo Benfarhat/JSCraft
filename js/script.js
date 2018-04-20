@@ -21,7 +21,17 @@ var log = document.querySelector('#console');
     renderTarget.contentWindow.window.console[verb] = (function (method, verb, log) {
         return function () {
             method.apply(console, arguments);
-            log.innerHTML += verb + ": " + Array.prototype.slice.call(arguments).join('\n') + '\n'
+            let classConsole = {
+                log : "text-info",
+                debug : "text-success",
+                log : "text-info",
+                info : "text-info",
+                warn : "text-warn",
+                error : "text-danger",
+                exception : "text-danger",
+                dir : "text-primary"
+            }
+            log.innerHTML += `<p class="${classConsole[verb]}">` + Array.prototype.slice.call(arguments).join('\n') + '<p>\n'
 
         };
     })(renderTarget.contentWindow.window.console[verb], verb, log);
