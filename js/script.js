@@ -21,6 +21,9 @@ var log = document.querySelector('#console');
     renderTarget.contentWindow.window.console[verb] = (function (method, verb, log) {
         return function () {
             method.apply(console, arguments);
+            /* 
+            @todo -> overflow-y auto and max-height
+            If we use a div instead of textarea
             let classConsole = {
                 log : "text-info",
                 debug : "text-success",
@@ -32,6 +35,8 @@ var log = document.querySelector('#console');
                 dir : "text-primary"
             }
             log.innerHTML += `<p class="${classConsole[verb]}">` + Array.prototype.slice.call(arguments).join('\n') + '<p>\n'
+            */
+            log.innerHTML += verb + ": " + Array.prototype.slice.call(arguments).join('\n') + '\n'
 
         };
     })(renderTarget.contentWindow.window.console[verb], verb, log);
