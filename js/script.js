@@ -20,20 +20,23 @@ const currentDate = () => {
 var log = document.querySelector('#console');
 //log.disabled = true;
 
-['log','debug','info','warn','error','exception','dir' ].forEach(function (verb) {
+['log','debug','info','warn','error','exception','dir', 'clear'].forEach(function (verb) {
 
     /* Console function overloading in current window */
     console[verb] = (function (method, verb, log) {
         return function () {
             method.apply(console, arguments);
-
-            let actualContent = log.innerHTML;
-            let prefix = '';
-            if(timestampTarget.classList.contains("text-info")){
-                prefix = currentDate() + ": ";
+            if(verb == "clear"){
+                log.innerHTML = '';
+            } else { 
+                let actualContent = log.innerHTML;
+                let prefix = '';
+                if(timestampTarget.classList.contains("text-info")){
+                    prefix = currentDate() + ": ";
+                }
+                log.innerHTML = prefix + Array.prototype.slice.call(arguments).join('\n') + '\n';
+                log.innerHTML += actualContent;
             }
-            log.innerHTML = prefix + Array.prototype.slice.call(arguments).join('\n') + '\n';
-            log.innerHTML += actualContent;
 
         };
     })(console[verb], verb, log);
@@ -44,38 +47,22 @@ var log = document.querySelector('#console');
         return function () {
             method.apply(console, arguments);
             
-          
-            let actualContent = log.innerHTML;
-            let prefix = '';
-            if(timestampTarget.classList.contains("text-info")){
-                prefix = currentDate() + ": ";
-            }
-            log.innerHTML = prefix + Array.prototype.slice.call(arguments).join('\n') + '\n';
-            log.innerHTML += actualContent;
-            /* @todo see: insertBefore */
-
-        };
-    })(renderTarget.contentWindow.window.console[verb], verb, log);
-
-});
-
-['log','debug','info','warn','error','exception','dir' ].forEach(function (verb) {
-    renderTarget.contentWindow.window.console[verb] = (function (method, verb, log) {
-        return function () {
-            method.apply(console, arguments);
             
-          
-            let actualContent = log.innerHTML;
-            let prefix = '';
-            if(timestampTarget.classList.contains("text-info")){
-                prefix = currentDate() + ": ";
+            if(verb == "clear"){
+                log.innerHTML = '';
+            } else {
+                let actualContent = log.innerHTML;
+                let prefix = '';
+                if(timestampTarget.classList.contains("text-info")){
+                    prefix = currentDate() + ": ";
+                }
+                log.innerHTML = prefix + Array.prototype.slice.call(arguments).join('\n') + '\n';
+                log.innerHTML += actualContent;
             }
-            log.innerHTML = prefix + Array.prototype.slice.call(arguments).join('\n') + '\n';
-            log.innerHTML += actualContent;
-            /* @todo see: insertBefore */
 
         };
     })(renderTarget.contentWindow.window.console[verb], verb, log);
+
 });
 
 
