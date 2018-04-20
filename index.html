@@ -20,6 +20,7 @@
                 <li id="js-btn" class="closure" data-target="#js-editor" data-expand="#js-btn" data-expand-class="text-info"><i class="fab fa-js"></i></li>
                 <li id="css-btn" class="closure" data-target="#css-editor" data-expand="#css-btn" data-expand-class="text-warning"><i class="fab fa-css3-alt"></i></li>
                 <li id="console-btn" class="closure" data-target="#console-wrapper" data-expand="#console-btn" data-expand-class="text-success"><i class="fas fa-terminal"></i></li>
+                <li id="render-btn" class="closure" data-target="#render-wrapper" data-expand="#render-btn" data-expand-class="text-primary"><i class="fas fa-eye"></i></li>
                 <li class="bar hide-small"></li>
                 <li class="bab hide-large"></li>
                 <li class="launch"><i class="fa fa-play"></i></li>
@@ -150,7 +151,7 @@ border-right: 1px solid rgba(0,0,0,.2)
 
         <!-- HTML Render -->
         <section id="render-wrapper" class="flex col flex-grow-1 render">
-            <h1 class="bg-primary p-b-2"><i class="fas fa-eye"></i> Result</h1>
+            <h1 class="bg-primary p-b-2"><i class="fas fa-eye"></i> Result <span class="right p-r-4 clearfix closure" data-target="#render-wrapper" data-expand="#render-btn" data-expand-class="text-primary"><i class="fa fa-times"></i></span></h1>
             <iframe id="render-frame" sandbox="allow-scripts allow-modals allow-same-origin"></iframe>
         </section>
         <!-- /HTML Render -->

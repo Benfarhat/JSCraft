@@ -15,6 +15,10 @@ header h1{
     letter-spacing: 0.25vw;
 }
 
+main section {
+    flex-grow: 1;
+}
+
 nav ul:first-child li {
     margin-right:16px;
     font-size:0.9rem;
