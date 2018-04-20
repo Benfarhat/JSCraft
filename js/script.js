@@ -34,7 +34,7 @@ var log = document.querySelector('#console');
                 if(timestampTarget.classList.contains("text-info")){
                     prefix = currentDate() + ": ";
                 }
-                log.innerHTML = prefix + Array.prototype.slice.call(arguments).join('\n') + '\n';
+                log.innerHTML = prefix + Array.prototype.slice.call(arguments).join('\n&nbsp;&nbsp;') + '\n';
                 log.innerHTML += actualContent;
             }
 
@@ -99,7 +99,12 @@ const renderView = () => {
     let previewScript = renderTarget.contentWindow.document.createElement('script');
     previewScript.src = "http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js";
 
-    renderTarget.contentWindow.window.eval(`${jsValue}`)
+    try {
+        renderTarget.contentWindow.window.eval(`${jsValue}`)
+    } catch (e) {
+        console.error(e.name, e.message)
+    }
+    
 }
 
 [].forEach.call( document.querySelectorAll('.launch'), function(el) {
