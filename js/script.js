@@ -1,3 +1,8 @@
+
+var renderTarget = false || document.querySelector('#render-frame')
+var consoleTarget = false || document.querySelector('#console')
+var preserveTarget = false || document.querySelector('#preservelog-btn')
+
 /* Get console message (log, debug, warn and error) from default output to div */
 
 var log = document.querySelector('#console');
@@ -11,13 +16,21 @@ var log = document.querySelector('#console');
     })(console[verb], verb, log);
 });
 
+
+['log','debug','info','warn','error','exception','dir' ].forEach(function (verb) {
+    renderTarget.contentWindow.window.console[verb] = (function (method, verb, log) {
+        return function () {
+            method.apply(console, arguments);
+            log.innerHTML += Array.prototype.slice.call(arguments).join('\n') + '\n'
+
+        };
+    })(renderTarget.contentWindow.window.console[verb], verb, log);
+});
+
 /* Get HTML, Js and CSS code from multiple textarea to iframe */
 
 const renderView = () => {
     console.log("Rendering ...")
-    let renderTarget = false || document.querySelector('#render-frame')
-    let consoleTarget = false || document.querySelector('#console')
-    let preserveTarget = false || document.querySelector('#preservelog-btn')
     if(preserveTarget && !preserveTarget.classList.contains("bg-primary")){
         //consoleTarget.innerHTML = ""
     }
@@ -42,19 +55,16 @@ const renderView = () => {
 
     renderTarget.contentWindow.document.body.innerHTML = `
     ${htmlValue}
-    <scridpt src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script>
     ${jsValue}
     </script>
     `;
 
-    renderTarget.contentWindow.window.eval(`${jsValue}`)
+    
+    let previewScript = renderTarget.contentWindow.document.createElement('script');
+    previewScript.src = "http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js";
 
-    /*
-    console.log(jsValue)
-
     renderTarget.contentWindow.window.eval(`${jsValue}`)
-    */
 }
 
 [].forEach.call( document.querySelectorAll('.launch'), function(el) {
