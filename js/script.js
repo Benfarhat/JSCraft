@@ -21,7 +21,7 @@ var log = document.querySelector('#console');
     renderTarget.contentWindow.window.console[verb] = (function (method, verb, log) {
         return function () {
             method.apply(console, arguments);
-            log.innerHTML += Array.prototype.slice.call(arguments).join('\n') + '\n'
+            log.innerHTML += verb + ": " + Array.prototype.slice.call(arguments).join('\n') + '\n'
 
         };
     })(renderTarget.contentWindow.window.console[verb], verb, log);
@@ -30,7 +30,6 @@ var log = document.querySelector('#console');
 /* Get HTML, Js and CSS code from multiple textarea to iframe */
 
 const renderView = () => {
-    console.log("Rendering ...")
     if(preserveTarget && !preserveTarget.classList.contains("bg-primary")){
         //consoleTarget.innerHTML = ""
     }

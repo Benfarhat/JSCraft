@@ -54,27 +54,87 @@
         <!-- HTML Editor -->
         <section id="html-editor" class="bg-danger flex col flex-grow-1">
                 <h1><i class="fab fa-html5"></i> HTML Editor <span class="right p-r-4 clearfix closure" data-target="#html-editor" data-expand="#html-btn" data-expand-class="text-danger"><i class="fa fa-times"></i></span></h1>
-                <textarea id="htmleditor" placeholder="html code" cols="40" rows="10"><h1>This is a test</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod ac risus ut dignissim. Etiam condimentum vel arcu a bibendum. Morbi sed blandit dolor. Vivamus sit amet condimentum nulla.</p></textarea>
+                <textarea id="htmleditor" placeholder="html code" cols="40" rows="10"><header class="bg-dark text-white">Title</header>
+<nav>
+<ul>
+<li class="bg-blue text-white">Menu1</li>
+<li class="bg-blue text-white">Menu2</li>
+</ul>
+</nav>
+<section>
+<article>Lorem ipsum dolor sit amet, consectetur adipiscing elit
+</article>
+
+<article>Vestibulum elementum lectus sapien, vitae semper eros molestie ac.
+</article>
+
+<article>Maecenas ac orci a erat sodales malesuada molestie sit amet mi.
+</article>
+</section>
+<footer class="bg-orange text-white">Made with love</footer>
+                </textarea>
         </section>
         <!-- /HTML Editor -->
         
         <!-- JS Editor -->
         <section id="js-editor" class="bg-info flex col flex-grow-1">  
             <h1><i class="fab fa-js"></i> JS Editor <span class="right p-r-4 clearfix closure" data-target="#js-editor" data-expand="#js-btn" data-expand-class="text-info"><i class="fa fa-times"></i></span></h1>
-            <textarea id="jseditor" placeholder="javascript code" cols="40" rows="10">(function($) { 
-                $(document).ready(function() {
-                  alert("this is a test");
-                });
-              }(jQuery));</textarea>
+            <textarea id="jseditor" placeholder="javascript code" cols="40" rows="10">console.log("This is a console log message")
+                    console.error("This is a console error message")
+                    for(let i = 0; i<10; i++)
+                      console.log(i)</textarea>
         </section>
+        <!-- @todo load jquery inside iframe:
+        (function($) { 
+$(document).ready(function() {
+alert("this is a test");
+});
+}(jQuery));
+        -->
         <!-- /JS Editor -->
 
         <!-- CSS Editor -->
         <section id="css-editor" class="bg-warning flex col flex-grow-1">
                 <h1><i class="fab fa-css3-alt"></i> CSS Editor <span class="right p-r-4 clearfix closure" data-target="#css-editor" data-expand="#css-btn" data-expand-class="text-warning"><i class="fa fa-times"></i></span></h1>
-                <textarea id="csseditor" placeholder="css code" cols="40" rows="10">h1 { color: #6ab04c; text-transform: uppercase;}
-p{ color: #22a6b3; }</textarea>
+                <textarea id="csseditor" placeholder="css code" cols="40" rows="10">body{
+margin:0;
+padding:0;
+display: flex;
+flex-direction:column;
+}
+* {
+box-sizing: border-box;
+}
+ul{
+margin:0;
+padding:0;
+list-style-type:none;
+display:flex;
+flex-direction:row;
+flex-wrap:wrap;
+justify-content: space-between
+}
+ul li{
+padding:4px 8px;
+flex-grow:1;
+}
+ul li:hover{
+background-color:#212121
+}
+section{
+display:flex;
+}
+article, footer{
+padding:2px 4px}
+article{
+border-right: 1px solid rgba(0,0,0,.2)
+}
+.bg-red{background-color:#c0392b;}
+.bg-blue{background-color:#2980b9;}
+.bg-green{background-color:#16a085;}
+.bg-orange{background-color:#d35400;}
+.bg-dark{background-color:#2c3e50;}
+.text-white{color:#fff;}</textarea>
         </section>
         <!-- /CSS Editor -->
 
